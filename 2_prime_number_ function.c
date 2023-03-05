@@ -18,7 +18,7 @@ int isPrime(int i)
 int main()
 {
     printf(" введите число N\n" );
-    scanf(" %d", &n);
+    scanf("%d", &n);
     while (n < 2)
     {
        printf(" N не простое ");
@@ -27,7 +27,7 @@ int main()
    {
         if ( isPrime( i ) == 1 )
         {
-            printf (" %d\n", i );
+            printf (" %d", i );
         }
    }
 }
