@@ -5,7 +5,7 @@
 int n;
 int i;
 
-int isPrime(int i)
+int isPrimeCast(int i)
 {
     
 	for (int k = 2; k < i; k++)
@@ -39,7 +39,7 @@ int main()
     }
    for(i = 2; i <= n; i++)
    {
-        if (isPrime( i ) == 1 )
+        if (isPrimeCast( i ) == 1 )
         {
             printf (" %d\n", i );
         }
