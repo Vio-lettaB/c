@@ -5,7 +5,7 @@
 int n;
 int i;
 
-int prostota(int i)
+int isPrime(int i)
 {
     
 	for (int k = 2; k < i; k++)
@@ -39,7 +39,7 @@ int main()
     }
    for(i = 2; i <= n; i++)
    {
-        if (prostota( i ) == 1 )
+        if (isPrime( i ) == 1 )
         {
             printf (" %d\n", i );
         }
