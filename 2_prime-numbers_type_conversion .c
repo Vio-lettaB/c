@@ -10,16 +10,9 @@ int isPrimeCast(int i)
     
 	for (int k = 2; k < i; k++)
 	{
-
-		float j;
-		float m;
-		float r;
-		float q;
-
-		r = i/k;
-		j = i;
-		m = k;
-		q = (j/m) - r;
+	    float q;
+	    
+		q = ((float) i / (float) k  - i/k);
 
 		if (q > 0.0)
 		{
