@@ -21,6 +21,6 @@ int main()
         num += 2;
     }
     printf("%.100f", (4 * pi4));
-    getch(); //ждем нажатия клавиши
+    getch(); 
     return 0;
 }
