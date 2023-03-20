@@ -1,15 +1,12 @@
 #include<stdio.h>
 #include<math.h>
 
-
 float Func(float x)
 {
    float res;
-   res = pow(x , 2);  
+   res = x;//pow(x , 2);  
    return res;
 }
-
-
 
 double main()
 {
@@ -20,9 +17,9 @@ double main()
     float Xn;
     float i;
     float *ind;
-    printf(" Введите шаг разбиения:" );
+    printf(" Введите шаг разбиения: " );
     scanf("%d", &step);
-    printf("Введите по очереди пределы интегрирования:");
+    printf("Введите по очереди пределы интегрирования:\n");
     scanf("%f", &a);
     scanf("%f", &b);
     len = (b - a) / step;
@@ -38,5 +35,4 @@ double main()
         ind = &summid;
     }
     printf(" значение интеграла от а = %f  до  b = %f равно = %f", a, b, *ind );
-    
 }
