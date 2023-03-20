@@ -13,23 +13,23 @@ float Func(float x)
 
 int main()
 {
-    int step;
+    int n_step;
     float a;
     float b;
-    float dx;
+    float step;
     float ind;
     printf(" Введите шаг разбиения:" );
-    scanf("%d", &step);
+    scanf("%d", &n_step);
     printf("Введите по очереди пределы интегрирования:");
     scanf("%f", &a);
     scanf("%f", &b);
-    dx = (b - a) / step;
-    printf(" длина разбиения: %f\n", dx );
-    for ( float i = a; i != b ; i += dx)
+    step = (b - a) / n_step;
+    printf(" длина разбиения: %f\n", step );
+    for ( float i = a; i != b ; i += step)
     {
         float mid;
         float summid;
-        mid = ( Func(i) + Func( i + dx )) * dx / 2;
+        mid = ( Func(i) + Func( i + step )) * step / 2;
         // printf(" Промежуточное значение средней линии трапеци: %f\n", mid);
         summid += mid;
         // printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
