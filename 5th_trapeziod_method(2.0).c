@@ -29,10 +29,11 @@ float integral( float a, float b, int n)
             // printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
             
         }
+    return summid;
     }
     else
     {
-        for ( float i = b; i != a ; i += step)
+        for ( float i = b; i != a ; i -= step)
         {
             
             float mid;
@@ -43,7 +44,7 @@ float integral( float a, float b, int n)
             // printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
     }
     return summid;
-}
+}}
 
 int main()
 {
