@@ -24,7 +24,7 @@ double dFunc(double y)
 
 int main()
 {
-    double X0 = -2;
+    double X0 = 2;
     double accuracy = 1.e-6;
     double Xn;
     // printf("Введите начальное приближение X0: " );
@@ -32,12 +32,13 @@ int main()
     // printf("Введите требуемую точность:" );
     // scanf("%lf", &accuracy);
     printf("%lf\n", accuracy);
-    for ( double i = X0; fabs(Xn - i) > accuracy ; i = Xn)
+    double i = X0;
+    while ( fabs(Xn - i) > accuracy )
     {
         Xn = i - ( Func(i) / dFunc(i) );
         printf("%lf, %lf, ", Xn, fabs(Xn - i));
+        i = Xn;
     }
     printf("корень уравнения, вычисленный с точностью %lf = %lf ", accuracy, Xn);
     
-    
-}
+}  
