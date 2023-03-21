@@ -24,9 +24,9 @@ float integral( float a, float b, int n)
             float mid;
             
             mid = ( Func(i) + Func( i + step )) * step / 2;
-            printf(" Промежуточное значение средней линии трапеци: %f\n", mid);
+            // printf(" Промежуточное значение средней линии трапеци: %f\n", mid);
             summid += mid;
-             printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
+            // printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
             
         }
     return summid;
@@ -39,9 +39,9 @@ float integral( float a, float b, int n)
             float mid;
             
             mid = ( Func(i) + Func( i + step )) * step / 2;
-            printf(" Промежуточное значение средней линии трапеци: %f\n", mid);
+            // printf(" Промежуточное значение средней линии трапеци: %f\n", mid);
             summid += mid;
-             printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
+            // printf(" Промежуточное значение средней линии трапеци: %f\n", summid);
     }
     return summid;
 }}
@@ -50,7 +50,7 @@ int main()
 {
     int n_step;
     float a = 4;
-    float b = 0;
+    float b = 88;
     printf(" Введите шаг разбиения:" );
     scanf("%d", &n_step);
     // printf("Введите по очереди пределы интегрирования:");
