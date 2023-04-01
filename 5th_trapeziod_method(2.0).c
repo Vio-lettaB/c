@@ -50,7 +50,7 @@ int main()
 {
     int n_step = 0;
     float a = 0;
-    float b = 6.28 ;
+    float b = 3.14 ;
     printf(" Введите шаг разбиения:" );
     scanf("%d", &n_step);
     // printf("Введите по очереди пределы интегрирования:");
