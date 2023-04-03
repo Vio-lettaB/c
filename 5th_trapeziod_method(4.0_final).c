@@ -2,14 +2,22 @@
 #include<math.h>
 
 
-float Func(float x)
+float Func1(float x)
 {
    float res = 0;
    res = pow(x, 2);  
    return res;
 }
 
-float integrate( float a, float b, float step)
+float Func2(float x)
+{
+   float res = 0;
+   res = pow(x, 3);  
+   return res;
+}
+
+
+float integrate( float(*Func)(float), float a, float b, float step)
 {
     
     
@@ -53,5 +61,6 @@ int main()
     float b = 6;
     float step = 0.01217113;
     
-    printf(" значение интеграла от а = %f  до  b = %f равно = %f", a, b, integrate(a, b, step));
+    printf(" значение интеграла 1 от а = %f  до  b = %f равно = %f\n", a, b, integrate( Func1, a, b, step));
+    printf(" значение интеграла 2 от а = %f  до  b = %f равно = %f", a, b, integrate( Func2, a, b, step));
 }
