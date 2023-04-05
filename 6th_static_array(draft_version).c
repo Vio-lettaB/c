@@ -54,16 +54,26 @@ int Min( int size )
     return min;
 }
 
-
+float Mean()
+{
+    float mean = 0;
+    for(int i = 0; i < size; ++i)
+        {
+        
+            mean += a[i];
+            
+        }
+    mean /= size; 
+    return mean;
+}
 
 int main()
 {
   setting_an_array();
   array_output(size); 
   
- 
-  int mean = 0;
   int rms = 0;
   printf(" max = %d", Max(size));
   printf(" min = %d", Min(size));
+  printf(" mean = %f", Mean(size));
 } 
