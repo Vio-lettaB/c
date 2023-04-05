@@ -17,11 +17,11 @@ _Bool Sort1(int *arr, int len)
     return true;
 }
 
-_Bool Sort2(int *arr, int len)
+_Bool sort2(int *arr, int len)
 {
-    for ( int i = (len - 1 ); i < (len - 1); i--)
+    for ( int i = (len - 1 ); i > 0; i--)
     {
-        if (arr[i] > arr[i + 1])
+        if (arr[i] > arr[i - 1])
         {
             return false;
         }
