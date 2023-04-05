@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #define Size 6
 
 
@@ -12,7 +13,7 @@ int size = 0;
 
 int fill_in_an_array( int *arr)
 {
-    printf("Введите размер массива : ");
+    printf("\nВведите размер массива : ");
     scanf("%d", &size);
     
     int i;
@@ -88,12 +89,28 @@ float Rms( int size, float mean, int *arr)
 }
 int main()
 {
-  
-  fill_in_an_array( b );
-  print_array(size, b); 
-  
-  printf(" max = %d", Max(size, b));
-  printf(" min = %d", Min(size, b));
-  printf(" mean = %f", Mean(size, b));
-  printf(" rms = %f", Rms(size, Mean(size, b), b));
+    fill_in_an_array( a );
+    print_array(size, a);
+     
+    printf(" max = %d", Max(size, a));
+    printf(" min = %d", Min(size, a));
+    printf(" mean = %f", Mean(size, a));
+    printf(" rms = %f", Rms(size, Mean(size, a), a));
+      
+    fill_in_an_array( b );
+    print_array(size, b); 
+      
+    printf(" max = %d", Max(size, b));
+    printf(" min = %d", Min(size, b));
+    printf(" mean = %f", Mean(size, b));
+    printf(" rms = %f", Rms(size, Mean(size, b), b));
+      
+    fill_in_an_array( c );
+    print_array(size, c);
+      
+    printf(" max = %d", Max(size, c));
+    printf(" min = %d", Min(size, c));
+    printf(" mean = %f", Mean(size, c));
+    printf(" rms = %f", Rms(size, Mean(size, c), c));
 } 
+
