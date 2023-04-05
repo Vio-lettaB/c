@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-int Is_sorted(int *arr, int len)
+int sort1(int *arr, int len)
 {
     for ( int i = 0; i < (len - 1); i++)
     {
@@ -16,7 +16,21 @@ int Is_sorted(int *arr, int len)
     return 1;
 }
 
-int swap (int *arr, int i)
+int sort2(int *arr, int len)
+{
+    for ( int i = (len - 1 ); i > 0; i--)
+    {
+        if (arr[i] > arr[i - 1])
+        {
+            return 0;
+        }
+        
+    }
+    return 1;
+}
+
+
+int swap1(int *arr, int i)
 {
     int c = 0;
     c = arr[i];
@@ -25,22 +39,49 @@ int swap (int *arr, int i)
    
 }
 
-int sort_array (int *arr, int len)
+int swap2(int *arr, int i)
+{
+    int c = 0;
+    c = arr[i];
+    arr[i] = arr[i - 1];
+    arr[i - 1] = c;
+   
+}
+
+int sort_array1(int *arr, int len)
 {
     int i = 0;
-    while (Is_sorted(arr, len) == 0)
+    while (sort1(arr, len) == 0)
     {
         for ( int i = 0; i < (len - 1); i++)
     	{
     	    if (arr[i] > arr[i + 1])
     	    {
-    	        swap (arr, i);
+    	        swap1(arr, i);
     	    }
     	}
     i++;
     }
    
 }
+
+int sort_array2(int *arr, int len)
+{
+    int i = 0;
+    while (sort2(arr, len) == 0)
+    {
+        for ( int i = (len - 1 ); i > 0; i--)
+    	{
+    	    if (arr[i] > arr[i - 1])
+    	    {
+    	        swap2(arr, i);
+    	    }
+    	}
+    i--;
+    }
+   
+}
+
 
 
 int print_array (int *arr, int len)
@@ -69,8 +110,11 @@ int main()
     }
     
     print_array (arr, len);
-    sort_array (arr, len);
-    printf("отсортированный массив: ");
+    sort_array1(arr, len);
+    printf("отсортированный массив 1: ");
+    print_array (arr, len);
+    sort_array2(arr, len);
+    printf("отсортированный массив 2: ");
     print_array (arr, len);
 }
 
