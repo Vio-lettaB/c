@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 // #define size (9)
 
 
@@ -67,6 +68,19 @@ float Mean()
     return mean;
 }
 
+
+float Rms( int size, float mean)
+{
+    float rms = 0;
+    for(int i = 0; i < size; ++i)
+        {
+        
+            rms += pow(a[i] - mean, 2);
+            
+        }
+    rms = sqrt(rms / (size - 1)); 
+    return rms;
+}
 int main()
 {
   setting_an_array();
@@ -76,4 +90,5 @@ int main()
   printf(" max = %d", Max(size));
   printf(" min = %d", Min(size));
   printf(" mean = %f", Mean(size));
+  printf(" rms = %f", Rms(size, Mean(size)));
 } 
