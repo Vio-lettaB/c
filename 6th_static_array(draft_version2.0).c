@@ -39,9 +39,9 @@ int Max( int size, int *arr)
     int max = 0;
     for(int i = 0; i < size; ++i)
         {
-            if(arr[i] > max)
+            if(*(arr + i) > max)
             {
-                max = arr[i];
+                max = *(arr + i);
             }
         }
     return max;
@@ -50,12 +50,12 @@ int Max( int size, int *arr)
 
 int Min( int size, int *arr )
 {
-    int min = arr[0];
+    int min = *arr;
     for(int i = 0; i < size; ++i)
         {
-            if(arr[i] < min)
+            if(*(arr + i) < min)
             {
-                min = arr[i];
+                min = *(a + i);
             }
         }
     return min;
