@@ -4,7 +4,7 @@
 #include <malloc.h>
 #include <stdbool.h>
 
-_Bool Sort1(int *arr, int len)
+_Bool sort1(int *arr, int len)
 {
     for ( int i = 0; i < (len - 1); i++)
     {
@@ -83,7 +83,7 @@ int main()
     }
     
     print_array( arr, len);
-    sort_array(Sort1(arr,len), arr, len );
+    sort_array(sort1(arr,len), arr, len );
     printf("отсортированный массив: ");
     print_array(arr, len);
 }
