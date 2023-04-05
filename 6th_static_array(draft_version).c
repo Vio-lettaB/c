@@ -53,13 +53,16 @@ int Min( int size )
         }
     return min;
 }
+
+
+
 int main()
 {
   setting_an_array();
   array_output(size); 
   
  
-  int average =0;
+  int mean = 0;
   int rms = 0;
   printf(" max = %d", Max(size));
   printf(" min = %d", Min(size));
