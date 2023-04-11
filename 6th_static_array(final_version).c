@@ -24,7 +24,7 @@ int fill_in_an_array( int *arr, int size)
     return size;
 }
 
-int print_array( int size, int *arr )
+int print_array( int *arr, int size )
 {   
     for (int i = 0; i < size; i++)
   {
@@ -32,7 +32,7 @@ int print_array( int size, int *arr )
   }
 }
 
-int Max( int size, int *arr)
+int Max( int *arr, int size)
 {
     int max = 0;
     for(int i = 0; i < size; ++i)
@@ -46,7 +46,7 @@ int Max( int size, int *arr)
 }
 
 
-int Min( int size, int *arr )
+int Min( int *arr, int size )
 {
     int min = *arr;
     for(int i = 0; i < size; ++i)
@@ -59,7 +59,7 @@ int Min( int size, int *arr )
     return min;
 }
 
-float Mean( int size, int *arr)
+float Mean( int *arr, int size)
 {
     float mean = 0;
     for(int i = 0; i < size; ++i)
@@ -73,7 +73,7 @@ float Mean( int size, int *arr)
 }
 
 
-float Rms( int size, float mean, int *arr)
+float Rms(  int *arr, int size, float mean)
 {
     float rms = 0;
     for(int i = 0; i < size; ++i)
@@ -87,27 +87,40 @@ float Rms( int size, float mean, int *arr)
 }
 int main()
 {
-    fill_in_an_array( a, 6 );
-    print_array(size, a);
+    
+    printf("Введите размер массива a : ");
+    scanf("%d", &size); 
+    
+    fill_in_an_array( a, size );
+    print_array(a, size );
      
-    printf(" max = %d", Max(size, a));
-    printf(" min = %d", Min(size, a));
-    printf(" mean = %f", Mean(size, a));
-    printf(" rms = %f\n", Rms(size, Mean(size, a), a));
+    printf(" max = %d", Max(a, size));
+    printf(" min = %d", Min(a, size));
+    printf(" mean = %f", Mean(a, size));
+    printf(" rms = %f\n", Rms(a, size, Mean(a, size)));
       
-    fill_in_an_array( b, 10 );
-    print_array(size, b); 
       
-    printf(" max = %d", Max(size, b));
-    printf(" min = %d", Min(size, b));
-    printf(" mean = %f", Mean(size, b));
-    printf(" rms = %f\n", Rms(size, Mean(size, b), b));
+    printf("Введите размер массива b : ");
+    scanf("%d", &size);   
+    
+    fill_in_an_array( b, size );
+    print_array(b, size); 
       
-    fill_in_an_array( c, 4 );
-    print_array(size, c);
+    printf(" max = %d", Max(b, size));
+    printf(" min = %d", Min(b, size));
+    printf(" mean = %f", Mean(b, size));
+    printf(" rms = %f\n", Rms(b, size, Mean(b, size)));
+    
+        
+    printf("Введите размер массива c : ");
+    scanf("%d", &size);   
+    
       
-    printf(" max = %d", Max(size, c));
-    printf(" min = %d", Min(size, c));
-    printf(" mean = %f", Mean(size, c));
-    printf(" rms = %f\n", Rms(size, Mean(size, c), c));
-} 
+    fill_in_an_array( c, size );
+    print_array(c, size);
+      
+    printf(" max = %d", Max(c, size));
+    printf(" min = %d", Min(c, size));
+    printf(" mean = %f", Mean(c, size));
+    printf(" rms = %f\n", Rms(c, size, Mean(c, size)));
+}    
