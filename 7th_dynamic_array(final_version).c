@@ -67,7 +67,7 @@ float Mean( int *arr, int size )
 }
 
 
-float Rms( int *arr, int size, float mean, )
+float Rms( int *arr, int size, float mean )
 {
     float rms = 0;
     for(int i = 0; i < size; ++i)
@@ -85,7 +85,7 @@ int main()
     int *arr;
     int size = 0;
     
-    printf("\nВведите размер массива : ");
+    printf("Введите размер массива : ");
     scanf("%d", &size);
     arr = (int*)malloc(size * sizeof(int));
    
