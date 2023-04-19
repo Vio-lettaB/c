@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+
+typedef struct 
+{
+    int m[3][3];
+}Matrix ;
+
+
+Matrix init_matrix()
+{
+    Matrix c;
+    int x= 0 ;
+    int y = 0;
+    for ( y = 0; y < 3; y++ )
+    {
+        for ( x = 0; x < 3; x++ )
+        {
+            c.m[y][x] = 0;
+        }
+    }
+    return c;
+}
+
+
+
+Matrix summ(Matrix *a, Matrix *b )
+{   
+    int x;
+    int y;
+    Matrix c;
+    for ( y = 0; y < 3; y++ )
+    {
+        for ( x = 0; x < 3; x++ )
+        {
+            c.m[x][y] = a->m[x][y] + b->m[x][y]; 
+        }
+    printf( "\n" );
+    }
+    return c;
+}
+
+Matrix mult(Matrix *a, Matrix *b)
+{
+    int row_idx;
+    int col_idx;
+    Matrix c = init_matrix();
+    for(row_idx = 0; row_idx < 3; row_idx++)
+        for(col_idx = 0; col_idx < 3; col_idx++)
+         {
+            for( int k = 0; k < 3; k++)
+               c.m[row_idx][col_idx] += a->m[row_idx][k] * b->m[k][col_idx];
+        }
+    return c;
+}
+
+// int det(Matrix *a)
+// {
+//     int det = 0;
+// }
+// int inverse(Matrix *a)
+// {
+//     Matrix a_inv;
+// }
+
+
+
+
+// Matrix scan_matrix( Matrix  *c )
+// {
+//     int i = 0;
+//     int col_idx= 0 ;
+//     int row_idx = 0;
+//     for ( row_idx = 0; row_idx < 3; row_idx++ )
+//     {
+//         for ( col_idx = 0; col_idx < 3; col_idx++ )
+//         {
+//             printf("a[%d][%d] = ", row_idx, col_idx );
+//             scanf("%d", &i );
+//             c->m[row_idx][col_idx] = i;
+//         }
+//     }
+//     return *c;
+// }
+
+void make_diagonal_matrix( Matrix  *c )
+{
+    int i = 0;
+    int col_idx= 0 ;
+    int row_idx = 0;
+    for ( row_idx = 0; row_idx < 3; row_idx++ )
+    {
+        for ( col_idx = 0; col_idx < 3; col_idx++ )
+        {
+            c->m[row_idx][col_idx] = (int)(col_idx == row_idx) * 5;
+        }
+    }
+}
+
+int print_matrix(Matrix c)
+{ 
+    int y = 0;
+    int x = 0 ;
+    for ( y = 0; y < 3; y++ )
+    {
+        for ( x = 0; x < 3; x++ )
+        {
+        // printf( "[%d][%d]=%d\t", y, x, c.m[y][x] );
+        printf( "%d\t", c.m[y][x] );
+        }
+    printf( "\n" );
+    }
+}
+
+
+int main()
+{ 
+    Matrix a;
+    Matrix b;
+    Matrix c; 
+    
+    //  int i = 0;
+    //  int x= 0 ;
+    // int y = 0;
+    // for ( y = 0; y < 3; y++ )
+    // {
+    //     for ( x = 0; x < 3; x++ )
+    //     {
+    //         printf("a[%d][%d] = ", y, x );
+    //         scanf("%d", &i );
+    //         a.m[y][x] = i;
+    //     }
+    // }
+    
+    // scan_matrix(&a);
+    make_diagonal_matrix(&a);
+    print_matrix(a);
+    printf("\n");
+    // scan_matrix(&b);
+    make_diagonal_matrix(&b);
+    print_matrix(b);
+     printf("\n");
+    c = summ(&a,&b);
+    printf("\nsumm = \n");
+    print_matrix(c);
+    printf("\n");
+    c = mult(&a,&b);
+    printf("\n");
+    printf("\nmult = \n");
+    print_matrix(c);
+    
+    // int i = 0;
+    // int Height = 3;
+    // int Width = 3; 
+    // a.m[Height][Width];
+    // int x, y;
+    // for ( y = 0; y < Height; y++ )
+    // {
+    //     for ( x = 0; x < Width; x++ )
+    //     {
+    //         printf("a[%d][%d] = ", y, x );
+    //         scanf("%d", &i );
+    //         a.m[y][x] = i;
+    //     }
+    // }
+    
+}
