@@ -115,12 +115,12 @@ Minor make_minor(Matrix *a, int i, int j)
             b.m[row_idx][col_idx] = a->m[row_idx + 1][col_idx + 1];
           }
           
-        //   printf( "%d\t", b.m[row_idx][col_idx] );
+           printf( "%d\t", b.m[row_idx][col_idx] );
           
        }
-        // printf("\n");
+         printf("\n");
     }
-    // printf("\n");
+     printf("\n");
     return b;
 }
 
@@ -129,7 +129,22 @@ Minor make_minor(Matrix *a, int i, int j)
 int det_minor(Minor *b) 
 {
     int det = 0;
-    det = (b->m[0][0] * b->m[1][1]) - (b->m[0][1] * b->m[1][0]);
+    int x = 0;
+    int y = 0;
+    if (b->m[0][0]  != 0 && b->m[1][1] != 0 )
+    {
+        x = b->m[0][0] * b->m[1][1]; 
+    }
+    if (b->m[0][1]  != 0 && b->m[1][0] != 0 )
+    {
+        y = b->m[0][1] * b->m[1][0]; 
+    }
+    
+    det = x - y;
+    
+    // printf("%d\n", x);
+    // printf("%d\n\n", y);
+    
     // printf("\n det i-го минора = %f\n", &det);
     return det;
     
@@ -152,26 +167,28 @@ int det(Matrix *a)
             det += pow(- 1, col_idx ) * a->m[col_idx][row_idx] * det_minor(&b);
         }
     }
-    printf("det a = %d", det);
+    printf("det a = %d\n", det);
+    return det;
 }
 
 
 MatrixX inverse(Matrix *a, int det)
 {
     MatrixX c = init_matrixX();
-    Minor m = init_minor();
+    
     int row_idx;
     int col_idx;
     for(row_idx = 0; row_idx < 3; row_idx++)
     {
         for(col_idx = 0; col_idx < 3; col_idx++)
         {
-            m = make_minor(a, row_idx, col_idx);
-            printf("minor\n");
-            print_minor(&m);
-            c.m[col_idx][row_idx] = (double)(det_minor(&m))/det;
-            printf("\n");
-            print_matrix(&c);
+            Minor m = init_minor();
+            m = make_minor(a, col_idx, row_idx);
+            // printf("minor\n");
+            // print_minor(&m);
+            // printf("\n");
+            c.m[col_idx][row_idx] = pow(- 1, col_idx + row_idx) * (double) det_minor(&m)/(double) det;
+            printf("det minor = %d\n\n", det_minor(&m));
         }
     }
     printf("\n");
@@ -214,13 +231,15 @@ Matrix mult(Matrix *a, Matrix *b)
     int col_idx;
     Matrix c = init_matrix();
     for(row_idx = 0; row_idx < 3; row_idx++)
+    {
         for(col_idx = 0; col_idx < 3; col_idx++)
-         {
+        {
             for( int k = 0; k < 3; k++)
             {
                c.m[row_idx][col_idx] += a->m[row_idx][k] * b->m[k][col_idx];
             }
         }
+    }
     return c;
 }
 
@@ -258,12 +277,28 @@ int print_minor(Matrix *c)
 }
 
 
+int print_matrixX(MatrixX *c)
+{ 
+    int row_idx = 0;
+    int col_idx = 0 ;
+    for ( row_idx = 0; row_idx < 3; row_idx++ )
+    {
+        for ( col_idx = 0; col_idx < 3; col_idx++ )
+        {
+        // printf( "[%d][%d]=%d\t", y, x, c.m[y][x] );
+        printf( "%lf\t", c->m[row_idx][col_idx] );
+        }
+    printf( "\n" );
+    }
+}
+
 
 int main()
 { 
     Matrix a;
     Matrix b;
     Matrix c; 
+    MatrixX k;
     int d;
 
     make_diagonal_matrix(&a);
@@ -282,9 +317,9 @@ int main()
     print_matrix(&c);
     d = det(&a);
     printf("\n");
-    c = inverse(&a, d);
+    k = inverse(&a, d);
     printf("\ninverse = \n");
-    print_matrix(&c);
+    print_matrixX(&k);
     
 
 }    
