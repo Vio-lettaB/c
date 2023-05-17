@@ -42,7 +42,7 @@ char *get_string(int *len)
     return string; 
 }
 
-char upper_case(char str[])
+void upper_case(char str[])
 {
     str[0] = toupper(str[0]);
     for(int i = 0; str[i] != '\0'; i++)
@@ -56,7 +56,7 @@ char upper_case(char str[])
 }
 
 
-char remove_extra_space(char str[])
+void remove_extra_space(char str[])
 {
     
     for (int i = 0; i < strlen(str); i++)  
@@ -73,7 +73,7 @@ char remove_extra_space(char str[])
 }
 
 
-char remove_space_before_closing_sign(char str[])
+void remove_space_before_closing_sign(char str[])
 {
     for (int i = 0; i < strlen(str); i++)  
     {
@@ -89,7 +89,7 @@ char remove_space_before_closing_sign(char str[])
 }
 
 
-char add_space_after_closing_sign(char str[])
+void add_space_after_closing_sign(char str[])
 {
     for (int i = 0; i < strlen(str); i++)  
     {
@@ -113,7 +113,7 @@ char add_space_after_closing_sign(char str[])
 }
 
 
-int test_upper_case()
+void test_upper_case()
 {
     printf("begin\n");
     char str_example[64] = "abc. def";
@@ -132,7 +132,7 @@ int test_upper_case()
 }
 
 
-int test_extra_spaces() 
+void test_extra_spaces() 
 {
     printf("begin\n");
     char str_example[64] = "a          b 1 2 3 4";
@@ -151,7 +151,7 @@ int test_extra_spaces()
 }
 
 
-int test_remove_space_before_closing_sign()
+void test_remove_space_before_closing_sign()
 {
     printf("begin\n");
     char str_example[64] = "Abc , Def .";
@@ -170,7 +170,7 @@ int test_remove_space_before_closing_sign()
 }
 
 
-int test_add_space_after_closing_sign()
+void test_add_space_after_closing_sign()
 {
     printf("begin\n");
     char str_example[64] = "Abc,Def";
