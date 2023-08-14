@@ -1,0 +1,70 @@
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+#define ONE_WIRE_BUS 4 // Пин подключения OneWire шины, 4 
+
+#include "DHT.h"                                       // Подключаем библиотеку DHT
+
+#define DHTPIN 2                                       // Объявляем номер вывода для датчика
+#define DHTTYPE DHT11                                  // Объявляем тип датчика DHT11(но если у вас DHT22, указывайте его)
+
+OneWire oneWire(ONE_WIRE_BUS); // Подключаем бибилотеку OneWire
+DallasTemperature sensors(&oneWire); // Подключаем бибилотеку DallasTemperature
+
+DeviceAddress temperatureSensors[3]; // Размер массива определяем исходя из количества установленных датчиков
+uint8_t deviceCount = 0;
+
+
+DHT dht(DHTPIN, DHTTYPE);                              // Создаем объект датчика
+
+// Функция вывода адреса датчика 
+void printAddress(DeviceAddress deviceAddress)
+{
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    if (deviceAddress[i] < 16) Serial.print("0");
+    Serial.print(deviceAddress[i], HEX); // Выводим адрес датчика в HEX формате 
+  }
+}
+
+void setup(void)
+{
+  Serial.begin(115200); // Задаем скорость соединения с последовательным портом 
+  sensors.begin(); // Иницилизируем датчики
+  dht.begin();                                         // Инициализируем датчик
+  deviceCount = sensors.getDeviceCount(); // Получаем количество обнаруженных датчиков
+
+  for (uint8_t index = 0; index < deviceCount; index++)
+  {
+    sensors.getAddress(temperatureSensors[index], index);
+  }
+}
+
+void loop() 
+{
+  delay(2000);
+  Serial.println();
+  sensors.requestTemperatures();
+  for (int i = 0; i < deviceCount; i++)
+  {
+    printAddress(temperatureSensors[i]); // Выводим название датчика
+    Serial.print(": ");
+    Serial.println(sensors.getTempC(temperatureSensors[i])); // Выводим температуру с датчика
+  }
+  delay(1000); 
+                                         // Пауза 2 секунды
+  float h = dht.readHumidity();                        // Считываем влажность
+  float t = dht.readTemperature();                     // Считываем температуру в градусах Цельсия
+
+  if (isnan(h) || isnan(t)) {                          // Проверяем, нет ли ошибки измерения
+    Serial.println("Failed to read from DHT sensor!");
+  }
+  
+  // Выводим считанные данные на печать в последовательный порт
+  Serial.print("Humidity: ");
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: ");
+  Serial.print(t);
+  Serial.println(" *C ");
+}
